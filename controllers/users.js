@@ -53,7 +53,16 @@ exports.getLogin = async function (req, res) {
     } catch (err) {
       console.debug(`Error Login Failed : ${err.message}`)
     }
-}
+};
+exports.logout = async function (req, res) {
+    try {
+      res.clearCookie("jwt", {path : '/'})
+      res.send("User Logout")
+    } catch(err) {
+      console.debug(`Error logout data : ${err.message}`)    
+    }
+};
+
 exports.getUsers = async function (req, res) {
     try {
         const result = await users.find();
